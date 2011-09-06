@@ -1,0 +1,11 @@
+{
+  "name": "aloha",
+  "description": "Enables the Aloha editor for text area controls.",
+  "version": "0.1.0",
+  "homepage": "http://github.com/nhemsley/calipso-aloha",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cliftonc/calipso-aloha.git"
+  },
+  "author": "Nicholas Hemsley <nick.hems@gmail.com>"
+}
