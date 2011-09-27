@@ -1,5 +1,5 @@
 /**
- * Enable rich forms (jQuery UI and editor)
+ * Enable rich forms (Aloha Editor)
  */
 var rootpath = process.cwd() + '/',
   path = require('path'),
@@ -31,26 +31,24 @@ function route(req, res, module, app, next) {
  */
 function init(module, app, next) {
 
-  calipso.lib.step(
-
-  function defineRoutes() {
-
-    // Add a route to every page, ideally just do it on form pages, but can't tell atm
-    module.router.addRoute(/.*/, allPages, {
-      end: false,
-      template: 'aloha.script',
-      block: 'scripts.aloha'
-    }, this.parallel());
-    module.router.addRoute(/.*/, allPages, {
-      end: false,
-      template: 'aloha.style',
-      block: 'styles.aloha'
-    }, this.parallel());
-    app.use(calipso.lib.express["static"](__dirname + '/static'));
-
-    //module.router.addRoute('GET /richforms/preview', showPreview, {}, this.parallel());
-
-  });
+   calipso.lib.step(
+    function defineRoutes() {
+      // Add a route to every page, ideally just do it on form pages, but can't tell atm
+      module.router.addRoute(/.*/, allPages, {
+        end: false,
+        template: 'aloha.script',
+        block: 'scripts.aloha'
+      }, this.parallel());
+      module.router.addRoute(/.*/, allPages, {
+        end: false,
+        template: 'aloha.style',
+        block: 'styles.aloha'
+      }, this.parallel());
+    },
+    function done() {
+      app.use(calipso.lib.express["static"](__dirname + '/static'));
+      next();  
+    });
 };
 
 /**
